@@ -1,4 +1,59 @@
 @import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "celengan";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Base surfaces - refined for better contrast */
+  --color-base-100: oklch(99% 0.005 160);  /* pure, clean white with hint of warmth */
+  --color-base-200: oklch(96% 0.01 160);   /* subtle separation */
+  --color-base-300: oklch(92% 0.015 160);  /* borders and dividers */
+  --color-base-content: oklch(20% 0.015 160); /* crisp, readable text */
+
+  /* Primary: money green (trustworthy, professional, with a wink) */
+  --color-primary: oklch(52% 0.13 155);     /* slightly deeper for better contrast */
+  --color-primary-content: oklch(99% 0.005 155);
+
+  /* Secondary / accent: piggy pink (playful but restrained) */
+  --color-secondary: oklch(68% 0.13 350);    /* slightly more muted */
+  --color-secondary-content: oklch(20% 0.015 350);
+
+  --color-accent: oklch(68% 0.13 350);
+  --color-accent-content: oklch(20% 0.015 350);
+
+  /* Neutral - refined for better hierarchy */
+  --color-neutral: oklch(32% 0.015 160);
+  --color-neutral-content: oklch(99% 0.005 160);
+
+  /* Status colors - professional but not boring */
+  --color-info: oklch(62% 0.12 230);
+  --color-info-content: oklch(99% 0.005 230);
+
+  --color-success: oklch(58% 0.13 145);     /* money green variant */
+  --color-success-content: oklch(99% 0.005 145);
+
+  --color-warning: oklch(75% 0.13 85);      /* soft amber */
+  --color-warning-content: oklch(25% 0.02 85);
+
+  --color-error: oklch(58% 0.15 25);        /* clear but not alarming */
+  --color-error-content: oklch(99% 0.005 25);
+
+  /* Radius: modern, refined, professional */
+  --radius-selector: 0.5rem;   /* buttons, badges */
+  --radius-field: 0.5rem;       /* inputs */
+  --radius-box: 1rem;           /* cards, containers */
+
+  /* Base sizing */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* Borders & effects - subtle depth */
+  --border: 1px;
+  --depth: 1;   /* subtle depth for hierarchy */
+  --noise: 0;   /* clean, no texture */
+}
 
 :root {
   --background: #ffffff;
@@ -22,5 +77,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ghost:hover {
+  background-color: oklch(96% 0.01 160);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus states */
+*:focus-visible {
+  outline: 2px solid oklch(52% 0.13 155);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }

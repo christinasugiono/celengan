@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Rocket, Plus, X, ArrowRight, ArrowLeft } from "lucide-react"
+import { Rocket, Plus, X, ArrowRight, ArrowLeft, PiggyBank } from "lucide-react"
 
 interface BudgetItem {
   id: string
@@ -231,11 +231,11 @@ export default function OnboardingPage() {
 
       <div className="mx-auto max-w-2xl px-4 sm:px-6 py-8 sm:py-12 md:py-16 relative z-10">
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <div className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 grid place-items-center shadow-lg">
-              <span className="text-xl sm:text-2xl">🐷</span>
+          <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <PiggyBank className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
-            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-secondary text-gradient">
+            <span className="text-lg sm:text-xl font-semibold text-base-content">
               Celengan
             </span>
           </div>

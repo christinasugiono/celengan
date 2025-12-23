@@ -99,7 +99,7 @@ export default function DashboardNavbar({ activeGroupName, activeGroupId }: Dash
             </span>
           </button>
           {showMembersMenu && (
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-base-200 rounded-lg shadow-lg border border-base-300 p-3 z-50">
+            <div className="absolute top-full right-0 mt-2 w-64 bg-base-200 rounded-lg shadow-lg border border-base-300 p-3 z-50">
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-base-300">
                 <Users className="w-4 h-4" />
                 <h3 className="font-semibold text-sm">Members</h3>

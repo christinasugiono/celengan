@@ -111,7 +111,7 @@ export default async function TransactionsPage() {
 
     return {
       id: t.id,
-      date: t.occurredAt.toISOString().split('T')[0], // Format as YYYY-MM-DD
+      date: t.occurredAt, // Already in YYYY-MM-DD format from date column
       amount,
       currency: t.currency,
       direction: t.direction as 'income' | 'expense' | 'transfer',

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ArrowLeft, Save, FileText, Camera, PenLine } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -22,7 +22,7 @@ interface Group {
 
 type AddMode = "select" | "manual" | "screenshot" | "import"
 
-export default function NewTransactionPage() {
+function NewTransactionContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [mode, setMode] = useState<AddMode>("select")
@@ -611,5 +611,25 @@ export default function NewTransactionPage() {
 
       <Dock />
     </main>
+  )
+}
+
+export default function NewTransactionPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-base-100 text-base-content pb-20 sm:pb-16" style={{ paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }}>
+          <DashboardNavbar activeGroupName="Loading..." />
+          <div className="mx-auto max-w-2xl px-4 sm:px-6 py-8 sm:py-12">
+            <div className="text-center">
+              <span className="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+          </div>
+          <Dock />
+        </main>
+      }
+    >
+      <NewTransactionContent />
+    </Suspense>
   )
 }

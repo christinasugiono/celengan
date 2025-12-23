@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser"
 import Link from "next/link"
-import { Rocket, CheckCircle2, ArrowLeft } from "lucide-react"
+import { Rocket, CheckCircle2, ArrowLeft, PiggyBank } from "lucide-react"
 
 export default function SignInPage() {
   const supabase = createSupabaseBrowserClient()
@@ -96,11 +96,11 @@ export default function SignInPage() {
         </Link>
 
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-3 mb-6">
-            <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 grid place-items-center shadow-lg">
-              <span className="text-2xl">🐷</span>
+          <Link href="/" className="inline-flex items-center gap-2 mb-6">
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <PiggyBank className="w-5 h-5 text-primary" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary text-gradient">Celengan</span>
+            <span className="text-xl font-semibold text-base-content">Celengan</span>
           </Link>
         </div>
 
@@ -138,7 +138,7 @@ export default function SignInPage() {
                 </div>
 
                 <form onSubmit={onSubmit} className="space-y-4">
-                  <label className="input validator">
+                  <label className="input validator w-full">
                     <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                       <g
                         strokeLinejoin="round"

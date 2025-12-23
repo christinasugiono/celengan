@@ -1,104 +1,253 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* ============================================
+   HYBRID THEME SYSTEM
+   - DaisyUI for component styling
+   - CSS custom properties for flexibility
+   ============================================ */
+
+/* Light Theme - Warm & Vibrant Emerald */
 @plugin "daisyui/theme" {
-  name: "celengan";
+  name: "celengan-light";
   default: true;
   prefersdark: false;
   color-scheme: light;
 
-  /* Base surfaces - refined for better contrast */
-  --color-base-100: oklch(99% 0.005 160);  /* pure, clean white with hint of warmth */
-  --color-base-200: oklch(96% 0.01 160);   /* subtle separation */
-  --color-base-300: oklch(92% 0.015 160);  /* borders and dividers */
-  --color-base-content: oklch(20% 0.015 160); /* crisp, readable text */
+  /* Base surfaces - warm cream tones */
+  --color-base-100: #FAF9F6;  /* Warm white background */
+  --color-base-200: #F0EDE8;  /* Cream for cards */
+  --color-base-300: #E0DCD5;  /* Subtle borders */
+  --color-base-content: #1C1917; /* Warm black text */
 
-  /* Primary: money green (trustworthy, professional, with a wink) */
-  --color-primary: oklch(52% 0.13 155);     /* slightly deeper for better contrast */
-  --color-primary-content: oklch(99% 0.005 155);
+  /* Primary: Vibrant emerald green - powerful & trustworthy */
+  --color-primary: #059669;
+  --color-primary-content: #FFFFFF;
 
-  /* Secondary / accent: piggy pink (playful but restrained) */
-  --color-secondary: oklch(68% 0.13 350);    /* slightly more muted */
-  --color-secondary-content: oklch(20% 0.015 350);
+  /* Secondary: Warm stone */
+  --color-secondary: #78716C;
+  --color-secondary-content: #FFFFFF;
 
-  --color-accent: oklch(68% 0.13 350);
-  --color-accent-content: oklch(20% 0.015 350);
+  /* Accent: Teal for highlights */
+  --color-accent: #0D9488;
+  --color-accent-content: #FFFFFF;
 
-  /* Neutral - refined for better hierarchy */
-  --color-neutral: oklch(32% 0.015 160);
-  --color-neutral-content: oklch(99% 0.005 160);
+  /* Neutral */
+  --color-neutral: #44403C;
+  --color-neutral-content: #FAF9F6;
 
-  /* Status colors - professional but not boring */
-  --color-info: oklch(62% 0.12 230);
-  --color-info-content: oklch(99% 0.005 230);
+  /* Status colors */
+  --color-info: #0EA5E9;
+  --color-info-content: #FFFFFF;
 
-  --color-success: oklch(58% 0.13 145);     /* money green variant */
-  --color-success-content: oklch(99% 0.005 145);
+  --color-success: #10B981;
+  --color-success-content: #FFFFFF;
 
-  --color-warning: oklch(75% 0.13 85);      /* soft amber */
-  --color-warning-content: oklch(25% 0.02 85);
+  --color-warning: #F59E0B;
+  --color-warning-content: #1C1917;
 
-  --color-error: oklch(58% 0.15 25);        /* clear but not alarming */
-  --color-error-content: oklch(99% 0.005 25);
+  --color-error: #EF4444;
+  --color-error-content: #FFFFFF;
 
-  /* Radius: modern, refined, professional */
-  --radius-selector: 0.5rem;   /* buttons, badges */
-  --radius-field: 0.5rem;       /* inputs */
-  --radius-box: 1rem;           /* cards, containers */
+  /* Radius */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
 
   /* Base sizing */
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
 
-  /* Borders & effects - subtle depth */
+  /* Borders & effects - minimal */
   --border: 1px;
-  --depth: 1;   /* subtle depth for hierarchy */
-  --noise: 0;   /* clean, no texture */
+  --depth: 0;
+  --noise: 0;
 }
 
+/* Dark Theme - Deep & Rich */
+@plugin "daisyui/theme" {
+  name: "celengan-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Base surfaces - warm dark tones */
+  --color-base-100: #1C1917;  /* Warm black background */
+  --color-base-200: #292524;  /* Slightly lighter for cards */
+  --color-base-300: #3D3835;  /* Subtle borders */
+  --color-base-content: #FAF9F6; /* Warm white text */
+
+  /* Primary: Brighter emerald for dark mode */
+  --color-primary: #34D399;
+  --color-primary-content: #1C1917;
+
+  /* Secondary: Warm stone */
+  --color-secondary: #A8A29E;
+  --color-secondary-content: #1C1917;
+
+  /* Accent: Bright teal */
+  --color-accent: #2DD4BF;
+  --color-accent-content: #1C1917;
+
+  /* Neutral */
+  --color-neutral: #78716C;
+  --color-neutral-content: #FAF9F6;
+
+  /* Status colors - brighter for dark mode */
+  --color-info: #38BDF8;
+  --color-info-content: #1C1917;
+
+  --color-success: #34D399;
+  --color-success-content: #1C1917;
+
+  --color-warning: #FBBF24;
+  --color-warning-content: #1C1917;
+
+  --color-error: #F87171;
+  --color-error-content: #1C1917;
+
+  /* Radius */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+
+  /* Base sizing */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* Borders & effects - minimal */
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (for additional flexibility)
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Semantic colors - map to theme */
+  --background: #FAF9F6;
+  --foreground: #1C1917;
+
+  /* Primary palette */
+  --primary: 160 84% 39%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Card surfaces */
+  --card: #F0EDE8;
+  --card-foreground: #1C1917;
+
+  /* Muted elements */
+  --muted: #E0DCD5;
+  --muted-foreground: #78716C;
+
+  /* Borders */
+  --border: #E0DCD5;
+  --input: #E0DCD5;
+  --ring: #059669;
+
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Ownership colors */
+  --owner-me: 199 89% 48%;
+  --owner-partner: 330 81% 60%;
+  --owner-shared: 160 84% 39%;
+
+  /* Confidence indicators */
+  --confidence-high: 0 84% 60%;
+  --confidence-medium: 38 92% 50%;
+  --confidence-low: 160 60% 45%;
+
+  /* Warning custom tokens */
+  --warning: 38 92% 50%;
+  --warning-foreground: 38 92% 15%;
+  --warning-muted: 38 60% 95%;
+
+  /* Destructive */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Surface elevated */
+  --surface-elevated: #FFFFFF;
+  --text-tertiary: #A8A29E;
+}
+
+[data-theme="celengan-dark"] {
+  --background: #1C1917;
+  --foreground: #FAF9F6;
+
+  --primary: 160 64% 52%;
+  --primary-foreground: 20 14% 10%;
+
+  --card: #292524;
+  --card-foreground: #FAF9F6;
+
+  --muted: #3D3835;
+  --muted-foreground: #A8A29E;
+
+  --border: #3D3835;
+  --input: #3D3835;
+  --ring: #34D399;
+
+  --owner-me: 199 79% 58%;
+  --owner-partner: 330 71% 65%;
+  --owner-shared: 160 64% 52%;
+
+  --warning: 45 93% 56%;
+  --warning-foreground: 45 93% 90%;
+  --warning-muted: 45 40% 15%;
+
+  --destructive: 0 72% 63%;
+  --destructive-foreground: 0 0% 100%;
+
+  --surface-elevated: #292524;
+  --text-tertiary: #78716C;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --font-logo: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Safe area insets for iPhone notches */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  /* Prevent text overflow */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
-/* Enhanced button styles */
-.btn-primary {
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* Ensure text doesn't overflow containers */
+* {
+  box-sizing: border-box;
 }
 
-.btn-primary:hover {
-  transform: translateY(-1px);
-}
-
-.btn-ghost {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-ghost:hover {
-  background-color: oklch(96% 0.01 160);
+/* Better text wrapping for long content */
+p, span, div, h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Smooth scroll */
@@ -106,9 +255,395 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+/* Ensure buttons and UI elements use sans-serif */
+button, .btn, input, select, textarea {
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Button styles - clean & modern */
+.btn-primary {
+  font-weight: 500;
+  letter-spacing: 0;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+[data-theme="celengan-dark"] .btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+}
+
+.btn-ghost {
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(5, 150, 105, 0.1);
+}
+
+[data-theme="celengan-dark"] .btn-ghost:hover {
+  background: rgba(52, 211, 153, 0.1);
+}
+
 /* Better focus states */
-*:focus-visible {
-  outline: 2px solid oklch(52% 0.13 155);
+*:focus-visible:not(input):not(textarea):not(select) {
+  outline: 2px solid #059669;
   outline-offset: 2px;
   border-radius: 0.25rem;
+}
+
+[data-theme="celengan-dark"] *:focus-visible:not(input):not(textarea):not(select) {
+  outline-color: #34D399;
+}
+
+/* Card styles */
+.card {
+  transition: all 0.2s ease;
+  box-shadow: none;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="celengan-dark"] .card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+/* Ensure consistent border rendering */
+.card, .input, .select, .textarea, .btn {
+  border-width: 1px;
+  border-style: solid;
+  box-sizing: border-box;
+}
+
+/* Navbar alignment */
+.navbar {
+  align-items: center;
+  min-height: 4rem;
+}
+
+.navbar-start, .navbar-center, .navbar-end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Input styles */
+.input, .select, .textarea {
+  transition: all 0.2s ease;
+  border-width: 1px;
+  border-style: solid;
+  box-sizing: border-box;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+  border-color: #059669;
+}
+
+[data-theme="celengan-dark"] .input:focus,
+[data-theme="celengan-dark"] .select:focus,
+[data-theme="celengan-dark"] .textarea:focus {
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);
+  border-color: #34D399;
+}
+
+/* ============================================
+   GRADIENTS & EFFECTS
+   ============================================ */
+
+/* Primary gradient */
+.gradient-primary {
+  background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
+}
+
+[data-theme="celengan-dark"] .gradient-primary {
+  background: linear-gradient(135deg, #34D399 0%, #2DD4BF 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #78716C 0%, #A8A29E 100%);
+}
+
+/* Mesh gradient background */
+.gradient-mesh {
+  background:
+    radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(13, 148, 136, 0.06) 0px, transparent 50%);
+}
+
+[data-theme="celengan-dark"] .gradient-mesh {
+  background:
+    radial-gradient(at 0% 0%, rgba(52, 211, 153, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(45, 212, 191, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(52, 211, 153, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(45, 212, 191, 0.08) 0px, transparent 50%);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="celengan-dark"] .text-gradient {
+  background: linear-gradient(135deg, #34D399 0%, #2DD4BF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism */
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme="celengan-light"] .glass {
+  background: rgba(250, 249, 246, 0.85);
+  border: 1px solid rgba(224, 220, 213, 0.5);
+}
+
+[data-theme="celengan-dark"] .glass {
+  background: rgba(28, 25, 23, 0.85);
+  border: 1px solid rgba(61, 56, 53, 0.5);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(5, 150, 105, 0);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   FAB (Floating Action Button)
+   ============================================ */
+
+.fab {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  position: fixed;
+  bottom: calc(5rem + env(safe-area-inset-bottom));
+  right: 1rem;
+  z-index: 40;
+}
+
+@media (max-width: 640px) {
+  .fab {
+    bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    right: 0.75rem;
+  }
+}
+
+.fab button,
+.fab [role="button"] {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* ============================================
+   CUSTOM UTILITY CLASSES
+   ============================================ */
+
+/* Card elevated style */
+.card-elevated {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Owner badges */
+.badge-owner {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-owner-me {
+  background: hsl(var(--owner-me) / 0.15);
+  color: hsl(var(--owner-me));
+}
+
+.badge-owner-partner {
+  background: hsl(var(--owner-partner) / 0.15);
+  color: hsl(var(--owner-partner));
+}
+
+.badge-owner-shared {
+  background: hsl(var(--owner-shared) / 0.15);
+  color: hsl(var(--owner-shared));
+}
+
+/* Confidence bars */
+.confidence-bar {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: var(--muted);
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+/* Clean input style */
+.input-clean {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-clean:focus {
+  border-color: #059669;
+}
+
+[data-theme="celengan-dark"] .input-clean:focus {
+  border-color: #34D399;
+}
+
+/* ============================================
+   TEXT COLOR UTILITIES
+   ============================================ */
+
+[data-theme="celengan-light"] .text-base-content\/60,
+[data-theme="celengan-light"] .text-base-content\/70 {
+  color: rgba(28, 25, 23, 0.7) !important;
+}
+
+[data-theme="celengan-light"] .text-base-content\/80,
+[data-theme="celengan-light"] .text-base-content\/85 {
+  color: rgba(28, 25, 23, 0.85) !important;
+}
+
+[data-theme="celengan-dark"] .text-base-content\/60,
+[data-theme="celengan-dark"] .text-base-content\/70 {
+  color: rgba(250, 249, 246, 0.7) !important;
+}
+
+[data-theme="celengan-dark"] .text-base-content\/80,
+[data-theme="celengan-dark"] .text-base-content\/85 {
+  color: rgba(250, 249, 246, 0.85) !important;
+}
+
+/* Better contrast for labels */
+.label-text {
+  font-weight: 500;
+}
+
+[data-theme="celengan-light"] .label-text {
+  color: rgba(28, 25, 23, 0.95);
+}
+
+[data-theme="celengan-dark"] .label-text {
+  color: rgba(250, 249, 246, 0.95);
 }

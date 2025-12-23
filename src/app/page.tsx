@@ -1,159 +1,239 @@
-import {
-  Info,
-  Rocket,
-  Check
-} from "lucide-react";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { PiggyBank, Users, Shield, Eye, ArrowRight, Check } from "lucide-react";
+
+export default function Landing() {
+  const features = [
+    {
+      icon: Users,
+      title: "Built for Two",
+      description: "Track spending together without the awkward money talks. Each transaction is clearly marked as yours, theirs, or shared."
+    },
+    {
+      icon: Shield,
+      title: "You Stay in Control",
+      description: "Nothing saves automatically. Review every import, verify every duplicate, and decide what stays."
+    },
+    {
+      icon: Eye,
+      title: "Clarity, Not Judgment",
+      description: "See where money goes without guilt trips, streaks, or shame. Just clear, honest numbers."
+    }
+  ];
+
+  const howItWorks = [
+    "Import your bank statement once a month, or add transactions as you go",
+    "Review suggested categories and possible duplicates",
+    "See your spending together in one calm dashboard"
+  ];
+
   return (
-    <main className="min-h-screen bg-base-100 text-base-content">
-      {/* Navbar */}
-      <div className="navbar bg-base-100 border-b border-base-300 sticky top-0 z-50">
-        <div className="navbar-start">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-secondary/20 grid place-items-center">
-              <span className="text-xl">🐷</span>
+    <div className="min-h-screen bg-base-100">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-base-100/80 backdrop-blur-sm border-b border-base-300/50">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <PiggyBank className="w-4 h-4 text-primary" />
             </div>
-            <span className="text-xl font-bold">Celengan</span>
+            <span className="font-semibold text-base-content">Celengan</span>
           </div>
+          <Link href="/dashboard">
+            <button className="btn btn-ghost btn-sm">
+              Open App
+            </button>
+          </Link>
         </div>
-        <div className="navbar-end gap-2">
-          <a className="btn btn-ghost btn-sm gap-2" href="#how">
-            <Info className="w-4 h-4" />
-            How it works
-          </a>
-          <a className="btn btn-primary btn-sm gap-2" href="/sign-in">
-            <Rocket className="w-4 h-4" />
-            Get started
-          </a>
-        </div>
-      </div>
+      </header>
 
       {/* Hero */}
-      <div className="hero bg-base-200 min-h-[60vh]">
-        <div className="hero-content text-center">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl font-bold">
-              Track Your Money,{" "}
-              <span className="text-primary">Without the Mystery</span>
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-semibold text-base-content leading-tight mb-6">
+              Know where your money goes.
+              <br />
+              <span className="text-base-content/70">Together.</span>
             </h1>
-            <p className="py-6 text-lg">
-              Join thousands who use Celengan to see where their money goes — clearly, calmly, and without extra effort.
+            <p className="text-lg text-base-content/70 mb-10 max-w-xl mx-auto leading-relaxed">
+              A calm, shared money tracker for couples. No budgets. No guilt.
+              Just clarity on spending—whenever you want it.
             </p>
-            <a href="/sign-in" className="btn btn-primary btn-lg gap-2">
-              <Rocket className="w-5 h-5" />
-              Get Started
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Introduction Section - Single Column */}
-      <section className="border-t border-base-300/60 bg-base-100">
-        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-          <div className="text-center space-y-4">
-            <div className="text-sm text-primary font-medium uppercase tracking-wide">
-              Introduction
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/dashboard">
+                <button className="btn btn-primary btn-lg w-full sm:w-auto gap-2">
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </Link>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              Simplify Your Financial Tracking
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Social Proof - Subtle */}
+      <section className="py-12 px-6 border-y border-base-300/30 bg-base-200/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm text-base-content/70">
+            Built for couples who want to understand their finances without the stress
+          </p>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-base-content mb-4">
+              Money tracking that respects you
             </h2>
-            <p className="text-lg text-base-content/70 leading-relaxed max-w-2xl mx-auto">
-              Upload statements, add screenshots, or enter transactions manually. Celengan organizes them,
-              flags duplicates, and suggests categories — but nothing is saved without your review.
+            <p className="text-base-content/70 max-w-lg mx-auto">
+              We believe you don&apos;t need another app telling you what to do.
+              You just need to see clearly.
             </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <feature.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-medium text-base-content mb-2">{feature.title}</h3>
+                <p className="text-sm text-base-content/70 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section - Grid Layout */}
-      <section id="how" className="border-t border-base-300/60 bg-base-100">
-        <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-              Key Features
+      {/* How It Works */}
+      <section className="py-20 px-6 bg-base-200/30">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-base-content mb-4">
+              Simple by design
             </h2>
-            <p className="text-lg text-base-content/60">
-              Everything you need to take control of your finances
+            <p className="text-base-content/70">
+              Import once a month, or add as you go. Your choice.
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="flex gap-3">
-              <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-base-content mb-1.5">Upload Any Format</h3>
-                <p className="text-sm text-base-content/70 leading-relaxed">
-                  Upload bank statements, drop screenshots, or enter transactions manually.
-                  We support PDF, CSV, and image formats.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-base-content mb-1.5">Smart Duplicate Detection</h3>
-                <p className="text-sm text-base-content/70 leading-relaxed">
-                  We automatically flag possible duplicate transactions. You review and confirm —
-                  we never save anything without your approval.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-base-content mb-1.5">Category Insights</h3>
-                <p className="text-sm text-base-content/70 leading-relaxed">
-                  See your spending broken down by category, month, and merchant.
-                  Get clear insights into where your money goes.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-base-content mb-1.5">Privacy First</h3>
-                <p className="text-sm text-base-content/70 leading-relaxed">
-                  Your data stays on your device. No bank connections, no cloud sync.
-                  You control everything.
-                </p>
-              </div>
-            </div>
+          </motion.div>
+
+          <div className="space-y-4">
+            {howItWorks.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="flex items-start gap-4 bg-base-100 rounded-xl p-5 border border-base-300/50"
+              >
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5 text-primary" />
+                </div>
+                <p className="text-base-content">{step}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="get-started" className="border-t border-base-300/60 bg-base-100">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
-          <div className="bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 rounded-2xl p-10 sm:p-14">
-            <div className="text-center space-y-6 max-w-2xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-                Ready to take control?
-              </h2>
-              <p className="text-lg text-base-content/70">
-                Start simple: upload one statement or add a few transactions.
-                Celengan will handle the organizing — you stay in control.
-              </p>
-              <a href="/app" className="btn btn-primary btn-lg gap-2">
-                <Rocket className="w-5 h-5" />
-                Get Started Now
-              </a>
+      {/* What We Don't Do */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-base-content mb-4">
+              What we don&apos;t do
+            </h2>
+            <p className="text-base-content/70 mb-10 max-w-lg mx-auto">
+              No guilt. No gamification. No pressure to open the app every day.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["No budgets", "No streaks", "No shame", "No auto-sync", "No notifications"].map((item) => (
+                <span
+                  key={item}
+                  className="px-4 py-2 rounded-full bg-base-200 text-base-content/70 text-sm"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-6 bg-primary/5">
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-base-content mb-4">
+              Ready to see where your money goes?
+            </h2>
+            <p className="text-base-content/70 mb-8">
+              Start tracking together. Takes about 5 minutes to import your first month.
+            </p>
+            <Link href="/dashboard">
+              <button className="btn btn-primary btn-lg gap-2">
+                Open Celengan
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="footer footer-center bg-base-200 text-base-content p-10 border-t border-base-300">
-        <nav className="grid grid-flow-col gap-4">
-          <a className="link link-hover">Privacy</a>
-          <a className="link link-hover">Terms</a>
-          <a className="link link-hover">Contact</a>
-        </nav>
-        <aside>
-          <p>© {new Date().getFullYear()} Celengan. All rights reserved.</p>
-        </aside>
+      <footer className="py-10 px-6 border-t border-base-300/50">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+              <PiggyBank className="w-3 h-3 text-primary" />
+            </div>
+            <span className="text-sm text-base-content/70">Celengan</span>
+          </div>
+          <p className="text-sm text-base-content/70">
+            A calm money tracker for couples
+          </p>
+        </div>
       </footer>
-    </main>
+    </div>
   );
 }

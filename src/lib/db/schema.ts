@@ -71,6 +71,12 @@ export const profiles = pgTable(
       withTimezone: true,
     }),
 
+    monthlyIncomeCents: bigint("monthly_income_cents", { mode: "number" }),
+    // optional
+    currency: text("currency").notNull().default("IDR"),
+
+    activeGroupId: uuid("active_group_id"),
+
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
@@ -84,7 +90,7 @@ export const profiles = pgTable(
 )
 
 // ------------------------------------
-// Groups (workspace / “space”)
+// Groups (workspace / "space")
 // ------------------------------------
 export const groups = pgTable(
   "groups",
